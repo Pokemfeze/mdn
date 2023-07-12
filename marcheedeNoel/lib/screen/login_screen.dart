@@ -172,13 +172,14 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                         children: const [
                           Text(
-                            "S'inscrire",
+                            "Connexion",
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
                               color: Colors.white,
                             ),
                           ),
+                          SizedBox(width: 5,),
                           Icon(
                             Icons.arrow_forward,
                             color: Colors.white,

@@ -212,6 +212,7 @@ class _SignUpState extends State<SignUp> {
                                 color: Colors.white,
                               ),
                             ),
+                            SizedBox(width: 5,),
                             Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
