@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "241993477846",
+    "project_id": "marche-de-noel-d659f",
+    "storage_bucket": "marche-de-noel-d659f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241993477846:android:ca0d0e24b2028f4699a377",
+        "android_client_info": {
+          "package_name": "com.example.marcheedenoel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241993477846-n51dqaaknq4lev2rucorcp2073bmttug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marcheedenoel",
+            "certificate_hash": "433bf368fc7523baedbf41e1d5e7d3691a112967"
+          }
+        },
+        {
+          "client_id": "241993477846-qsi0p7rn5mvgvtk68n9m8mot3tslo2b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApYSQIR-WrzeCw6Z72g4SKFofmqLumrug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241993477846-qsi0p7rn5mvgvtk68n9m8mot3tslo2b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

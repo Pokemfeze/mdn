@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marcheedenoel/cliper/cliper.dart';
+import 'package:marcheedenoel/screen/home_screen.dart';
+import 'package:marcheedenoel/screen/signup_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,10 +13,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
+
 
     Widget _builEmail(){
       return Container(
@@ -34,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
               return"Entre votre Email";
             }
           },
-          controller: emailController,
-          decoration: const InputDecoration(
+            controller: emailController,
+            decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(top: 14),
             prefixIcon: Icon(
@@ -66,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
               return"Entre votre Mot de Passe";
             }
           },
-          controller: emailController,
+          controller: passwordController,
           decoration: const InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14),
@@ -80,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
             Stack(
@@ -142,37 +149,68 @@ class _LoginPageState extends State<LoginPage> {
                     ]
                   )
                 ),
-                child: Row(
-                  children: const [
-                    SizedBox(width: 20,),
-                    Text("Se Connecter",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 17,
-                      color: Colors.white
-                    ),),
-                    Icon(Icons.arrow_forward,
-                    color: Colors.white,)
-                  ],
-                ),
+                  child: InkWell(
+                    onTap: () {
+                      FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text)
+                          .then((value){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Homepage()));
+                      }).onError((error, stackTrace) {
+                        print("Error ${error.toString()}");
+                      });
+
+
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20), // Espacement horizontal
+                      decoration: BoxDecoration(
+                        color: Colors.redAccent, // Couleur de fond du bouton
+                        borderRadius: BorderRadius.circular(5), // Bord arrondi avec un rayon de 5 pixels
+                      ),
+                      child: Row(
+                        children: const [
+                          Text(
+                            "S'inscrire",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
               ),
-              const SizedBox(height: 130,),
+              const SizedBox(height: 120,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text("Vous n'avez pas de compte ?",
+                children:  [
+                  const Text("Vous n'avez pas de compte ?",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.black
                   ),
                   ),
-                  Text("S'incrire",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xfff53c3c),
-                    ),)
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=> const SignUp()));
+                    },
+                    child: const Text("S'incrire",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xfff53c3c),
+                      ),
+                    ),
+                  )
                 ],
               )
             ],
