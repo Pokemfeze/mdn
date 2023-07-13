@@ -13,6 +13,7 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+
       backgroundColor: Colors.transparent,
       index: 2,
       items: const [

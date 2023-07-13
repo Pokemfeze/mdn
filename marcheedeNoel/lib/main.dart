@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/home_screen.dart';
 import 'package:marcheedenoel/screen/signup_screen.dart';
 import 'package:marcheedenoel/screen/splash_screen.dart';
+import 'package:marcheedenoel/screen/ticket_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: const Homepage(),
+      home: const TicketPage(),
     );
   }
 }
