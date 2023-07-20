@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_widget/ticket_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../model/ticketmodel.dart';
+import '../services/dbservices.dart';
 
 class TicketPage extends StatefulWidget {
   const TicketPage({super.key});
@@ -10,14 +15,12 @@ class TicketPage extends StatefulWidget {
 }
 
 class _TicketPageState extends State<TicketPage> {
-  int selectedValue = 1;
-  TextEditingController totalPriceController = TextEditingController();
+  int totalPrice = 0;
+  int _selectedValue = 1;
+  //TextEditingController totalPriceController = TextEditingController();
 
   @override
-  void dispose() {
-    totalPriceController.dispose();
-    super.dispose();
-  }
+ 
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +50,7 @@ class _TicketPageState extends State<TicketPage> {
               ),
             ),
             //const SizedBox(height: 15),
-            Text("Profitez des congés avec \nLe marché de Noël. ",
+            const Text("Profitez des congés avec \nLe marché de Noël. ",
             style: TextStyle(
               fontSize: 16,
               fontStyle: FontStyle.italic,
@@ -120,9 +123,8 @@ class _TicketPageState extends State<TicketPage> {
                                       onPressed: () {
                                         // Augmenter la valeur sélectionnée
                                         setState(() {
-                                          selectedValue++;
-                                          totalPriceController.text =
-                                              (selectedValue * 500).toString();
+                                          _selectedValue++;
+                                          totalPrice = _selectedValue * 500;
                                         });
                                       },
                                     ),
@@ -131,10 +133,9 @@ class _TicketPageState extends State<TicketPage> {
                                       onPressed: () {
                                         // Diminuer la valeur sélectionnée
                                         setState(() {
-                                          if (selectedValue > 1) {
-                                            selectedValue--;
-                                            totalPriceController.text =
-                                                (selectedValue * 500).toString();
+                                          if (_selectedValue > 1) {
+                                            _selectedValue--;
+                                            totalPrice = _selectedValue * 500;
                                           }
                                         });
                                       },
@@ -143,14 +144,13 @@ class _TicketPageState extends State<TicketPage> {
                                 ),
                               ),
                               controller:
-                              TextEditingController(text: selectedValue.toString()),
+                              TextEditingController(text: _selectedValue.toString()),
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 // Mettre à jour la valeur sélectionnée
                                 setState(() {
-                                  selectedValue = int.tryParse(value) ?? selectedValue;
-                                  totalPriceController.text =
-                                      (selectedValue * 500).toString();
+                                  _selectedValue = int.tryParse(value) ?? _selectedValue;
+                                  totalPrice = _selectedValue * 500;
                                 });
                               },
                             ),
@@ -164,7 +164,7 @@ class _TicketPageState extends State<TicketPage> {
                           Expanded(
                             child: TextFormField(
                               enabled: false,
-                              controller: totalPriceController,
+                              controller: TextEditingController(text: totalPrice.toString()),
                               decoration: InputDecoration(
                                 labelText: 'Prix Total',
                               ),
@@ -186,7 +186,10 @@ class _TicketPageState extends State<TicketPage> {
               height: 40,
               width: 140,
               child: ElevatedButton(
-                 onPressed: () {  },
+                 onPressed: () {
+                   onsave(context, _selectedValue, totalPrice);
+                  // saveFormData();
+                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.amber,
                 ) ,
@@ -198,4 +201,20 @@ class _TicketPageState extends State<TicketPage> {
       ),
     );
   }
+
+void onsave(context,selectevalue,_totalPrice) async {
+  try{
+  DatabaseService db = DatabaseService();
+  db.addTicket(Tickets(
+      nbrperssonne: _selectedValue,
+      prixTotal: totalPrice,
+  ));
+  print('Données sauvegardées avec succès.');
+
+  }
+  catch (e) {
+    print('Erreur lors de la sauvegarde des données : $e');
+  }
+  }
 }
+
