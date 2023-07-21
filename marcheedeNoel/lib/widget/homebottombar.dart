@@ -1,6 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marcheedenoel/screen/home_screen.dart';
+import 'package:marcheedenoel/screen/ticket_screen.dart';
 
 class HomeBottomBar extends StatefulWidget {
   const HomeBottomBar({super.key});
@@ -13,8 +15,16 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-
       backgroundColor: Colors.transparent,
+      onTap: (index){
+        if (index == 0) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const TicketPage()));
+        } else if (index == 1) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const TicketPage()));
+        } else if (index == 2) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
+        }
+      },
       index: 2,
       items: const [
         Icon(Icons.person_outline, size: 30),

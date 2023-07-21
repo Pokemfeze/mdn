@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marcheedenoel/screen/qrcode.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -187,7 +188,16 @@ class _TicketPageState extends State<TicketPage> {
               width: 140,
               child: ElevatedButton(
                  onPressed: () {
-                   onsave(context, _selectedValue, totalPrice);
+                   String ticketInfo = 'Nombre de personne: $_selectedValue\n'
+                       'Prix Total: $totalPrice';
+
+                   Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => QRCodePage(ticketInfo: ticketInfo),
+                     ),
+                   );
+                   //onsave(context, _selectedValue, totalPrice);
                   // saveFormData();
                  },
                 style: ElevatedButton.styleFrom(

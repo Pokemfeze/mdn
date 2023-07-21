@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/home_screen.dart';
+import 'package:marcheedenoel/screen/payscreen.dart';
+import 'package:marcheedenoel/screen/qr_scanner.dart';
 import 'package:marcheedenoel/screen/signup_screen.dart';
 import 'package:marcheedenoel/screen/splash_screen.dart';
 import 'package:marcheedenoel/screen/ticket_screen.dart';
