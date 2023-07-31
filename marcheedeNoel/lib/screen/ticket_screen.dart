@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marcheedenoel/screen/payscreen.dart';
 import 'package:marcheedenoel/screen/qrcode.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../model/ticketmodel.dart';
+import '../services/data.dart';
 import '../services/dbservices.dart';
 
 class TicketPage extends StatefulWidget {
@@ -16,12 +18,8 @@ class TicketPage extends StatefulWidget {
 }
 
 class _TicketPageState extends State<TicketPage> {
-  int totalPrice = 0;
-  int _selectedValue = 1;
   //TextEditingController totalPriceController = TextEditingController();
-
   @override
- 
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +42,7 @@ class _TicketPageState extends State<TicketPage> {
             ),
           //  const SizedBox(height: 20),
             Text(
-              "Votre ticket".toUpperCase(),
+              "Ticket D'acces".toUpperCase(),
               style: const TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 25,
@@ -124,8 +122,8 @@ class _TicketPageState extends State<TicketPage> {
                                       onPressed: () {
                                         // Augmenter la valeur sélectionnée
                                         setState(() {
-                                          _selectedValue++;
-                                          totalPrice = _selectedValue * 500;
+                                         GlobalData.selectedValue++;
+                                          GlobalData.totalPrice = GlobalData.selectedValue * 500;
                                         });
                                       },
                                     ),
@@ -134,9 +132,9 @@ class _TicketPageState extends State<TicketPage> {
                                       onPressed: () {
                                         // Diminuer la valeur sélectionnée
                                         setState(() {
-                                          if (_selectedValue > 1) {
-                                            _selectedValue--;
-                                            totalPrice = _selectedValue * 500;
+                                          if (GlobalData.selectedValue > 1) {
+                                            GlobalData.selectedValue--;
+                                            GlobalData.totalPrice = GlobalData.selectedValue * 500;
                                           }
                                         });
                                       },
@@ -145,13 +143,13 @@ class _TicketPageState extends State<TicketPage> {
                                 ),
                               ),
                               controller:
-                              TextEditingController(text: _selectedValue.toString()),
+                              TextEditingController(text: GlobalData.selectedValue.toString()),
                               keyboardType: TextInputType.number,
                               onChanged: (value) {
                                 // Mettre à jour la valeur sélectionnée
                                 setState(() {
-                                  _selectedValue = int.tryParse(value) ?? _selectedValue;
-                                  totalPrice = _selectedValue * 500;
+                                  GlobalData.selectedValue = int.tryParse(value) ?? GlobalData.selectedValue;
+                                  GlobalData.totalPrice = GlobalData.selectedValue * 500;
                                 });
                               },
                             ),
@@ -165,7 +163,7 @@ class _TicketPageState extends State<TicketPage> {
                           Expanded(
                             child: TextFormField(
                               enabled: false,
-                              controller: TextEditingController(text: totalPrice.toString()),
+                              controller: TextEditingController(text: GlobalData.totalPrice.toString()),
                               decoration: InputDecoration(
                                 labelText: 'Prix Total',
                               ),
@@ -188,13 +186,13 @@ class _TicketPageState extends State<TicketPage> {
               width: 140,
               child: ElevatedButton(
                  onPressed: () {
-                   String ticketInfo = 'Nombre de personne: $_selectedValue\n'
-                       'Prix Total: $totalPrice';
+                   String ticketInfo = 'Nombre de personne: ${GlobalData.selectedValue}\n'
+                       'Prix Total: ${GlobalData.totalPrice}';
 
                    Navigator.push(
                      context,
                      MaterialPageRoute(
-                       builder: (context) => QRCodePage(ticketInfo: ticketInfo),
+                       builder: (context) => PayPage(),
                      ),
                    );
                    //onsave(context, _selectedValue, totalPrice);
@@ -212,7 +210,7 @@ class _TicketPageState extends State<TicketPage> {
     );
   }
 
-void onsave(context,selectevalue,_totalPrice) async {
+/*void onsave(context,selectevalue,_totalPrice) async {
   try{
   DatabaseService db = DatabaseService();
   db.addTicket(Tickets(
@@ -225,6 +223,6 @@ void onsave(context,selectevalue,_totalPrice) async {
   catch (e) {
     print('Erreur lors de la sauvegarde des données : $e');
   }
-  }
+  }*/
 }
 

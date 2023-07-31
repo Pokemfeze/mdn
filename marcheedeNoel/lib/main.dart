@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/home_screen.dart';
 import 'package:marcheedenoel/screen/payscreen.dart';
-import 'package:marcheedenoel/screen/qr_scanner.dart';
+import 'package:marcheedenoel/screen/qrscanner_screen.dart';
 import 'package:marcheedenoel/screen/signup_screen.dart';
 import 'package:marcheedenoel/screen/splash_screen.dart';
 import 'package:marcheedenoel/screen/ticket_screen.dart';
@@ -15,6 +15,8 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+  get ticketInfo => ticketInfo;
 
   // This widget is the root of your application.
   @override
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: const TicketPage(),
+      home: Homepage(),
     );
   }
 }
