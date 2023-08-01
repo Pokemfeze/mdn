@@ -62,7 +62,15 @@ class _PayPageState extends State<PayPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    // Action deuxième bouton
+                    String ticketInfo = 'Nombre de personne: ${GlobalData.selectedValue}\n'
+                        'Prix Total: ${GlobalData.totalPrice}';
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QRCodePage(ticketInfo: ticketInfo),
+                      ),
+                    );
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10), // Spécifiez le rayon souhaité ici

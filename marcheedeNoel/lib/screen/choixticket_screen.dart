@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/ticket_screen.dart';
+import 'package:marcheedenoel/screen/ticket_screen1.dart';
 
 class ChoixTicketPage extends StatefulWidget {
   const ChoixTicketPage({super.key});
@@ -55,9 +56,15 @@ class _ChoixTicketPageState extends State<ChoixTicketPage> {
                     ),
                   ),
                 ),
+
                 InkWell(
                   onTap: () {
-                    // Action deuxième bouton
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicketPage1(),
+                      ),
+                    );
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10), // Spécifiez le rayon souhaité ici
@@ -75,6 +82,22 @@ class _ChoixTicketPageState extends State<ChoixTicketPage> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                SizedBox(width: 60),
+                Text(
+                  "Ticket D'entree",
+                  style: TextStyle(fontSize: 18),
+                ),
+
+                SizedBox(width: 60),
+                Text(
+                  'Ticket Manege',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            )
           ],
         ),
       ),

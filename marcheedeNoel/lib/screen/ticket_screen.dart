@@ -5,7 +5,6 @@ import 'package:marcheedenoel/screen/qrcode.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../model/ticketmodel.dart';
 import '../services/data.dart';
 import '../services/dbservices.dart';
@@ -156,7 +155,7 @@ class _TicketPageState extends State<TicketPage> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

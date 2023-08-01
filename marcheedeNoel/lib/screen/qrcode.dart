@@ -3,19 +3,30 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
+import 'listqrcode.dart';
+
 class QRCodePage extends StatefulWidget {
   final String ticketInfo;
 
-  QRCodePage({ required this.ticketInfo}) ;
+  QRCodePage({required this.ticketInfo});
 
   @override
   _QRCodePageState createState() => _QRCodePageState();
 }
-
+List<String> qrCodes = [];
 class _QRCodePageState extends State<QRCodePage> {
 
-  @override
 
+  void navigateToListQRCodePage(String qrCode) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ListQRCode( ),
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -25,19 +36,33 @@ class _QRCodePageState extends State<QRCodePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          QrImageView(
-          data: widget.ticketInfo,
-          version: QrVersions.auto,
-          size: 200.0,
+            QrImageView(
+              data: widget.ticketInfo,
+              version: QrVersions.auto,
+              size: 200.0,
+            ),
+            SizedBox(height: 20.0),
+            const Text(
+              'Scannez ce code QR',
+              style: TextStyle(fontSize: 18.0),
+            ),
+            SizedBox(height: 50),
+            SizedBox(
+              width: 200,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    final String qrCode = widget.ticketInfo;
+                    qrCodes.add(qrCode);
+                    navigateToListQRCodePage(qrCode);
+                  });
+                },
+                child: const Text('OK'),
+              ),
+            ),
+          ],
         ),
-        SizedBox(height: 20.0),
-        const Text (
-          'Scannez ce code QR',
-        style: TextStyle(fontSize: 18.0),
       ),
-      ],
-    ),
-    ),
     );
   }
 }
