@@ -1,6 +1,7 @@
  import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/payscreen.dart';
+import 'package:marcheedenoel/screen/payscreen1.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
 import '../services/data1.dart';
@@ -176,13 +177,13 @@ class TicketPage1 extends StatefulWidget {
                width: 140,
                child: ElevatedButton(
                    onPressed: () {
-                     String ticketInfo = 'Nombre de personne: ${GlobalData1.selectedValue1}\n'
+                     String ticketInfo1 = 'Nombre de personne: ${GlobalData1.selectedValue1}\n'
                          'Prix Total: ${GlobalData1.totalPrice1}';
 
                      Navigator.push(
                        context,
                        MaterialPageRoute(
-                         builder: (context) => PayPage(),
+                         builder: (context) => PayPage1(),
                        ),
                      );
                      //onsave(context, _selectedValue, totalPrice);

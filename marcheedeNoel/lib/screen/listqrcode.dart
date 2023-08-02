@@ -7,7 +7,6 @@ import 'home_screen.dart';
 
  class ListQRCode extends StatefulWidget {
 
-
    const ListQRCode({super.key});
 
    @override
@@ -31,7 +30,7 @@ import 'home_screen.dart';
      return Scaffold(
        appBar: AppBar(
          title: const Text(
-           'Liste QR Code ',
+           "Liste QR Code d'Acces",
            style: TextStyle(color: Colors.white),
          ),
          leading: IconButton(
@@ -55,8 +54,8 @@ import 'home_screen.dart';
                  child: Image.network(ListData[index].ImageUrl),
                ),
                onTap: (){
-                 String ticketInfo = 'Nombre de personne: ${GlobalData.selectedValue}\n'
-                     'Prix Total: ${GlobalData.totalPrice}';
+                 String ticketInfo = 'Acces autorise a : ${GlobalData.selectedValue} personne(s)\n';
+                     //'Prix Total: ${GlobalData.totalPrice}';
 
                  Navigator.push(
                    context,

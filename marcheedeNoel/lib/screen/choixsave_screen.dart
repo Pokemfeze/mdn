@@ -1,6 +1,8 @@
  import 'package:flutter/material.dart';
 import 'package:marcheedenoel/screen/listqrcode.dart';
 
+import 'listqrcode1.dart';
+
 class Choix extends StatefulWidget {
    const Choix({super.key});
 
@@ -54,7 +56,7 @@ class Choix extends StatefulWidget {
 
                  InkWell(
                    onTap: () {
-
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ListQrCode1()));
                    },
                    child: ClipRRect(
                      borderRadius: BorderRadius.circular(10), // Spécifiez le rayon souhaité ici

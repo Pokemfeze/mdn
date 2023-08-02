@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:marcheedenoel/screen/qrcode.dart';
+import 'package:marcheedenoel/screen/qrcode1.dart';
 
-import '../services/data.dart';
+import '../services/data1.dart';
 
-class PayPage extends StatefulWidget {
-  const PayPage({super.key});
+class PayPage1 extends StatefulWidget {
+  const PayPage1({super.key});
 
   @override
-  State<PayPage> createState() => _PayPageState();
+  State<PayPage1> createState() => _PayPage1State();
 }
 
-class _PayPageState extends State<PayPage> {
+class _PayPage1State extends State<PayPage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +36,13 @@ class _PayPageState extends State<PayPage> {
               children: [
                 InkWell(
                   onTap: () {
-                    String ticketInfo = 'Acces autorise a : ${GlobalData.selectedValue} personne(s)\n'
-                        'Prix Total: ${GlobalData.totalPrice}';
+                    String ticketInfo1 = 'Acces autorise a : ${GlobalData1.selectedValue1} personne(s)\n'
+                        'Prix Total: ${GlobalData1.totalPrice1}';
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QRCodePage(ticketInfo: ticketInfo),
+                        builder: (context) => QRCodePage1(ticketInfo1: ticketInfo1),
                       ),
                     );
                   },
@@ -62,13 +62,13 @@ class _PayPageState extends State<PayPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    String ticketInfo = 'Acces autorise a : ${GlobalData.selectedValue} personne(s)\n'
-                        'Prix Total: ${GlobalData.totalPrice}';
+                    String ticketInfo1 = 'Acces autorise a : ${GlobalData1.selectedValue1} personne(s)\n'
+                        'Prix Total: ${GlobalData1.totalPrice1}';
 
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QRCodePage(ticketInfo: ticketInfo),
+                        builder: (context) => QRCodePage1(ticketInfo1: ticketInfo1),
                       ),
                     );
                   },

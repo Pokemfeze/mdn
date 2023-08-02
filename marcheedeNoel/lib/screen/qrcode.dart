@@ -43,7 +43,7 @@ class _QRCodePageState extends State<QRCodePage> {
             ),
             SizedBox(height: 20.0),
             const Text(
-              'Scannez ce code QR',
+              'Votre code QR est prêt',
               style: TextStyle(fontSize: 18.0),
             ),
             SizedBox(height: 50),
