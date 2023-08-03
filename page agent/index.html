@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Systeme de controle</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <nav>
+         <label class="logo">MARCHE DE NOEL</label>
+         <ul>
+            <li><a href="#">Se Deconnecter</a></li>
+         </ul>
+      </nav>
+      <section>
+        <div class="left-section">
+            <!-- Contenu de la section gauche ici -->
+            <img src="logo.png" alt="Description de l'image">
+        </div>
+
+        <hr class="divider"/>
+
+         <div class="middle-content">
+            <p class="para">Systeme de controle de Qr Code</p>
+            <p>.........................</p>
+            <p>.........................</p>
+            <input type="text" placeholder="QR Code" class="input-field" oninput="checkInput()">
+            <p>.........................</p>
+            <p>.........................</p>
+            <button type="submit" class="custom-button" onclick="openPopup()" id="submitButton" disabled>OK</button>
+            
+         </div>
+         <div class="popup" id="popup">
+            <img src="tick.png" alt="Description de l'image">
+            <h2>MERCI !</h2>
+            <p>Acces autorise avec success</p>
+            <button type="button" onclick="closePopup()">OK</button>
+         </div>
+      </section>
+      <script>
+         let popup = document.getElementById("popup");
+         let submitButton = document.getElementById("submitButton");
+         let inputField = document.querySelector(".input-field");
+
+         function checkInput() {
+            if (inputField.value.trim() !== "") {
+               submitButton.disabled = false;
+            } else {
+               submitButton.disabled = true;
+            }
+         }
+
+         function openPopup(){
+            popup.classList.add("open-popup");
+         }
+
+         function closePopup(){
+            popup.classList.remove("open-popup");
+            inputField.value = "";
+         }
+      </script>
+   </body>
+</html>

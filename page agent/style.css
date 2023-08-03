@@ -1,0 +1,138 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  
+}
+body{
+  font-family: sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+nav .logo {
+    color: white;
+    font-size: 33px;
+    font-weight: bold;
+    line-height: 70px;
+    padding-left: 110px;
+    font-family: 'Times New Roman', Times; /* Replace with your desired font */
+  }
+nav{
+  height: 70px;
+  background: #fa0036;
+  box-shadow: 0 3px 15px rgba(0,0,0,.4);
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  display: inline-block;
+}
+nav ul li a{
+  color: white;
+  display: block;
+  padding: 0 15px;
+  line-height: 70px;
+  font-size: 20px;
+  background: #fa0036;
+  transition: .5s;
+}
+nav ul li a:hover,
+nav ul li a.active{
+  color: #000000;
+}
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .middle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+ }
+ 
+ .input-container,
+ .button-container {
+    margin-bottom: 10px;
+ }
+ p {
+    color: white;
+  }
+  .para{
+    color: #000000;
+    font-size: 20px;
+  }
+  .input-field {
+    width: 250px; 
+    height: 35px;
+ }
+ .custom-button {
+    width: 250px; 
+    height: 35px;
+    background-color: #fa0036;
+    color: white;
+    border-color:#fa0036 ;
+
+ }
+ .middle-content input {
+    margin-left: 150px; /* Ajustez la valeur selon vos besoins */
+  }
+  .middle-content button {
+    margin-left: 150px; /* Ajustez la valeur selon vos besoins */
+  }
+  .middle-content p {
+    margin-left: 185px; /* Ajustez la valeur selon vos besoins */
+  }
+.popup{
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+     top: 50%;
+     transform: translate(-50%, -50%) scale(1);
+}
+.popup img{
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+  .popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+
+  }
+  .popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #5eb43f;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2); 
+  }
+  .popup p{
+color: #000000;
+  }
