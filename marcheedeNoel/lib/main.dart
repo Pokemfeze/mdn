@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: Homepage(),
+      home: SplashScreen(),
     );
   }
 }
