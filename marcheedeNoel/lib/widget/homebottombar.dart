@@ -6,6 +6,8 @@ import 'package:marcheedenoel/screen/choixticket_screen.dart';
 import 'package:marcheedenoel/screen/home_screen.dart';
 import 'package:marcheedenoel/screen/ticket_screen.dart';
 
+import '../screen/googleMap.dart';
+
 class HomeBottomBar extends StatefulWidget {
   const HomeBottomBar({super.key});
 
@@ -27,7 +29,9 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
         }else if (index == 3) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Choix()));
-        }
+        }else if (index == 3) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const GoogleMapscreen()));
+    }
       },
       index: 2,
       items: const [

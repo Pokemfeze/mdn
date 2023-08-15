@@ -38,6 +38,11 @@ dependencies:
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
   curved_navigation_bar: ^1.0.3
+  google_maps_flutter: ^2.2.6
+  flutter_google_places: ^0.3.0
+  google_maps_webservice:
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
   #dio: ^4.0.0
   #flutter_polyline_points: ^1.0.0
   #google_maps_flutter:  ^2.0.2
@@ -48,7 +53,8 @@ dependencies:
   mobile_scanner: ^3.3.0
   qr_flutter: ^4.0.0
   qr_code_scanner: ^1.0.1
-
+  google_fonts: ^4.0.4
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
