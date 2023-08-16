@@ -29,8 +29,8 @@ class _HomeBottomBarState extends State<HomeBottomBar> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Homepage()));
         }else if (index == 3) {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Choix()));
-        }else if (index == 3) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const GoogleMapscreen()));
+        }else if (index == 4) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const GoogleMapscreen()));
     }
       },
       index: 2,
